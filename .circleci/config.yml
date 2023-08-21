@@ -1,0 +1,27 @@
+version: 2.1
+
+jobs:
+  mac-os:
+    parameters:
+      version:
+        default: "14.1.0"
+        type: string
+    macos:
+      xcode: << parameters.version >>
+    resource_class: macos.m1.medium.gen1
+    parallelism: 5
+    steps:
+      - checkout
+      - run: sysctl machdep.cpu.brand_string
+      - run:
+          name: Check Metal device
+          command: swift check_metal_device.swift
+
+workflows:
+  workflow1:
+    jobs:
+      - mac-os:
+          matrix:
+            parameters:
+              version: ["14.1.0", "14.2.0", "14.3.0"]
+ 
