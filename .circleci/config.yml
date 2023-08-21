@@ -12,7 +12,7 @@ jobs:
     parallelism: 10
     steps:
       - checkout
-      - run: sysctl machdep.cpu.brand_string
+      - run: system_profiler SPDisplaysDataType
       - run:
           name: Check Metal device
           command: swift check_metal_device.swift
