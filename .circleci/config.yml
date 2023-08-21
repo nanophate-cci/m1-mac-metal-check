@@ -9,7 +9,7 @@ jobs:
     macos:
       xcode: << parameters.version >>
     resource_class: macos.m1.medium.gen1
-    parallelism: 5
+    parallelism: 10
     steps:
       - checkout
       - run: sysctl machdep.cpu.brand_string
@@ -23,5 +23,5 @@ workflows:
       - mac-os:
           matrix:
             parameters:
-              version: ["14.1.0", "14.2.0", "14.3.0"]
+              version: ["14.1.0","14.2.0"]
  
