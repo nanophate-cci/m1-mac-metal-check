@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  macos: circleci/macos@2.3.6
+
 jobs:
   mac-os:
     parameters:
@@ -9,9 +12,9 @@ jobs:
     macos:
       xcode: << parameters.version >>
     resource_class: macos.m1.medium.gen1
-    parallelism: 10
     steps:
       - checkout
+      - macos/enable-vnc
       - run: system_profiler SPDisplaysDataType
       - run:
           name: Check Metal device
