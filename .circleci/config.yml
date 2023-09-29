@@ -12,7 +12,7 @@ jobs:
         type: string
     macos:
       xcode: << parameters.version >>
-    resource_class: macos.m1.medium.gen1
+    resource_class: macos.m1.large.gen1
     parallelism: 30
     steps:
       - checkout
