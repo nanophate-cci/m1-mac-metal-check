@@ -13,6 +13,7 @@ jobs:
     macos:
       xcode: << parameters.version >>
     resource_class: macos.m1.medium.gen1
+    parallelism: 30
     steps:
       - checkout
       - run: system_profiler SPDisplaysDataType
